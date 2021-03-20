@@ -1,0 +1,110 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion sdk.compile
+
+    defaultConfig {
+        applicationId "io.github.gianpamx.shscale"
+        minSdkVersion sdk.min
+        targetSdkVersion sdk.target
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "io.github.gianpamx.CustomTestRunner"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        compose true
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        useIR = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+
+    packagingOptions {
+        exclude "META-INF/**"
+    }
+}
+
+dependencies {
+    implementation project(':domain')
+
+    implementation libraries.kotlin.kotlin
+    implementation libraries.androidx.material
+    implementation libraries.androidx.appcompat
+    implementation libraries.androidx.ktx
+    implementation libraries.androidx.constraintLayout
+
+    implementation libraries.threetenabp
+    implementation libraries.timber
+
+    kapt libraries.dagger.compiler
+    implementation libraries.dagger.dagger
+    implementation libraries.dagger.support
+    kapt libraries.dagger.processor
+    kaptAndroidTest libraries.dagger.processor
+
+    implementation libraries.navigation.fragment
+    implementation libraries.navigation.ui
+    androidTestImplementation libraries.navigation.testing
+
+    implementation libraries.lifecycle.extensions
+    kapt libraries.lifecycle.compiler
+    implementation libraries.lifecycle.ktx
+    implementation libraries.lifecycle.livedata
+
+    implementation libraries.room.runtime
+    kapt libraries.room.compiler
+    implementation libraries.room.ktx
+    androidTestImplementation libraries.room.testing
+
+    implementation libraries.compose.ui
+    implementation libraries.compose.uiTooling
+    implementation libraries.compose.foundation
+    implementation libraries.compose.material
+    implementation libraries.compose.materialIconsCore
+    implementation libraries.compose.materialIconsExtended
+    implementation libraries.compose.activity
+    implementation libraries.compose.livedata
+    implementation libraries.compose.themeAdapter
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha03'
+    androidTestImplementation libraries.compose.testing
+
+    testImplementation libraries.testing.junit
+    testImplementation libraries.testing.assertj
+    testImplementation libraries.testing.mockitoKotlin2
+    testImplementation libraries.androidx.testing
+    testImplementation libraries.kotlin.test
+
+    androidTestImplementation libraries.testing.runner
+
+    androidTestImplementation libraries.testing.androidjunitx
+    androidTestImplementation libraries.testing.androidjunitktx
+    androidTestImplementation libraries.testing.corektx
+    androidTestImplementation libraries.testing.espresso
+    debugImplementation libraries.testing.fragments
+}
