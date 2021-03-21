@@ -23,7 +23,7 @@ class AppModule {
     @Provides
     @AppScope
     fun provideApplicationContext(application: Application): Context = application
-    
+
     @Provides
     @AppScope
     fun provideNotificationManager(context: Context) =

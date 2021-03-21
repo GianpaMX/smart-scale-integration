@@ -90,8 +90,8 @@ dependencies {
     implementation libraries.compose.materialIconsExtended
     implementation libraries.compose.activity
     implementation libraries.compose.livedata
+    implementation libraries.compose.livecycle
     implementation libraries.compose.themeAdapter
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha03'
     androidTestImplementation libraries.compose.testing
 
     testImplementation libraries.testing.junit
