@@ -14,11 +14,11 @@ class SharedPreferencesStorageApi(private val sharedPreferences: SharedPreferenc
 
     override var settings: Settings
         get() = Settings(
-            runInTheBackground = sharedPreferences.getBoolean(BG_KEY, false)
+            isBackgroundServiceEnabled = sharedPreferences.getBoolean(BG_KEY, false)
         )
         set(value) {
             sharedPreferences.edit {
-                putBoolean(BG_KEY, value.runInTheBackground)
+                putBoolean(BG_KEY, value.isBackgroundServiceEnabled)
             }
             settingsFlow.value = value
         }

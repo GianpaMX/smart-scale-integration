@@ -19,11 +19,11 @@ class ObserveSettingsTest {
 
     @Test
     fun `Observe Settings`() = runBlockingTest {
-        whenever(storageApi.liveSettings()).thenReturn(flowOf(Settings(runInTheBackground = true)))
+        whenever(storageApi.liveSettings()).thenReturn(flowOf(Settings(isBackgroundServiceEnabled = true)))
         val observeSettings = ObserveSettings(storageApi)
 
         observeSettings().test {
-            assertThat(expectItem().runInTheBackground).isEqualTo(true)
+            assertThat(expectItem().isBackgroundServiceEnabled).isEqualTo(true)
             expectComplete()
         }
     }

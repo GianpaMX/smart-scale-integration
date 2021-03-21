@@ -60,7 +60,7 @@ internal fun SettingsContent(
                     .height(IntrinsicSize.Max)
                     .padding(horizontal = 8.dp)
                     .semantics { contentDescription = runInTheBackgroundLabel },
-                checked = state.runInTheBackground,
+                checked = state.isBackgroundServiceEnabled,
                 onCheckedChange = onRunInTheBackgroundChange
             )
         }

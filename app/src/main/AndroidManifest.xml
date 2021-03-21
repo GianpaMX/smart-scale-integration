@@ -27,6 +27,9 @@
             android:name=".background.BackgroundService"
             android:description="@string/channel_description"
             android:exported="false" />
+        <receiver
+            android:name=".background.TurnOffBroadcastReceiver"
+            android:exported="false" />
     </application>
 
 </manifest>

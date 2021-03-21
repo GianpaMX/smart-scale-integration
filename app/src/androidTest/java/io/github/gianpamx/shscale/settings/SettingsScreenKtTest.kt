@@ -33,7 +33,7 @@ class SettingsScreenKtTest {
 
         composeTestRule.setContent {
             SettingsContent(state) {
-                state = state.copy(runInTheBackground = it)
+                state = state.copy(isBackgroundServiceEnabled = it)
             }
         }
     }
@@ -48,7 +48,7 @@ class SettingsScreenKtTest {
 
     @Test
     fun initialStateOn() {
-        state = state.copy(runInTheBackground = true)
+        state = state.copy(isBackgroundServiceEnabled = true)
 
         val runInTheBackgroundSwitch = composeTestRule
             .onNodeWithContentDescription(getString(R.string.settings_background_run_title))
@@ -63,7 +63,7 @@ class SettingsScreenKtTest {
 
         bgSwitch.performClick()
 
-        assertTrue(state.runInTheBackground)
+        assertTrue(state.isBackgroundServiceEnabled)
     }
 
     private fun getString(resId: Int) = targetContext.getString(resId)

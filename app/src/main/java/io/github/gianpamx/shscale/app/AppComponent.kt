@@ -7,6 +7,7 @@ import io.github.gianpamx.di.AppScope
 import io.github.gianpamx.di.FactoriesModule
 import io.github.gianpamx.shscale.MainActivity
 import io.github.gianpamx.shscale.background.BackgroundService
+import io.github.gianpamx.shscale.background.TurnOffBroadcastReceiver
 
 @AppScope
 @Component(
@@ -24,6 +25,8 @@ interface AppComponent {
     fun inject(activity: MainActivity)
 
     fun inject(service: BackgroundService)
+
+    fun inject(broadcastReceiver: TurnOffBroadcastReceiver)
 
     @Component.Builder
     interface Builder {

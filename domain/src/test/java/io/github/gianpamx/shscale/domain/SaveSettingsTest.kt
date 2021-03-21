@@ -8,7 +8,7 @@ import org.junit.Test
 class SaveSettingsTest {
     private val storageApi = object : StorageApi {
         override var settings: Settings = Settings(
-            runInTheBackground = true
+            isBackgroundServiceEnabled = true
         )
 
         override fun liveSettings() = TODO("Not needed")
@@ -18,8 +18,8 @@ class SaveSettingsTest {
     fun `Save Settings`() {
         val saveSettings = SaveSettings(storageApi)
 
-        saveSettings(Settings(runInTheBackground = false))
+        saveSettings(Settings(isBackgroundServiceEnabled = false))
 
-        assertThat(storageApi.settings.runInTheBackground).isFalse()
+        assertThat(storageApi.settings.isBackgroundServiceEnabled).isFalse()
     }
 }

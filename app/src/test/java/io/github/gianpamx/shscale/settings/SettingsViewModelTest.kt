@@ -19,7 +19,7 @@ import org.junit.Test
 
 @ExperimentalCoroutinesApi
 class SettingsViewModelTest {
-    private val settingsFlow = MutableStateFlow(Settings(runInTheBackground = false))
+    private val settingsFlow = MutableStateFlow(Settings(isBackgroundServiceEnabled = false))
     private val observeSettings: ObserveSettings = mock()
     private val saveSettings: SaveSettings = mock()
     private val errorChannel: BroadcastChannel<Throwable> = BroadcastChannel(Channel.CONFLATED)
@@ -48,7 +48,7 @@ class SettingsViewModelTest {
     @Test
     fun `Initial State`() = coroutineRule.testDispatcher.runBlockingTest {
         viewModel.state.observeForTesting {
-            assertThat(viewModel.state.value?.runInTheBackground).isEqualTo(false)
+            assertThat(viewModel.state.value?.isBackgroundServiceEnabled).isEqualTo(false)
         }
     }
 
@@ -61,7 +61,7 @@ class SettingsViewModelTest {
         viewModel.onRunInTheBackgroundChange(true)
 
         viewModel.state.observeForTesting {
-            assertThat(viewModel.state.value?.runInTheBackground).isEqualTo(true)
+            assertThat(viewModel.state.value?.isBackgroundServiceEnabled).isEqualTo(true)
         }
     }
 }

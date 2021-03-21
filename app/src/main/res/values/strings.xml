@@ -10,4 +10,8 @@
 
     <string name="settings_background_run_title">Run in the background</string>
     <string name="settings_background_run_subtitle">Start when the phone boots and keep it running in the background</string>
+
+    <string name="background_permission_ask_title">Permission needed</string>
+    <string name="background_permission_ask_description">In order to communicate to the scale, fine location permission is needed</string>
+    <string name="background_permission_ask_turn_off">Turn off</string>
 </resources>

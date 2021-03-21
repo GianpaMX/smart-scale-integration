@@ -28,14 +28,14 @@ class SettingsViewModel @Inject constructor(
 
     fun onRunInTheBackgroundChange(newValue: Boolean) {
         val settingsState = state.value ?: SettingsState()
-        saveSettings(settingsState.copy(runInTheBackground = newValue).toEntity())
+        saveSettings(settingsState.copy(isBackgroundServiceEnabled = newValue).toEntity())
     }
 
     private fun Settings.toViewState() = SettingsState(
-        runInTheBackground = runInTheBackground
+        isBackgroundServiceEnabled = isBackgroundServiceEnabled
     )
 
     private fun SettingsState.toEntity() = Settings(
-        runInTheBackground = runInTheBackground
+        isBackgroundServiceEnabled = isBackgroundServiceEnabled
     )
 }
