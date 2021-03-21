@@ -12,6 +12,7 @@ jobs:
     }
     - android/run-tests: {test-command: ./gradlew --console=plain jacocoFullTestReport}
     - android/save-gradle-cache: {cache-prefix: v1a}
+    - run: bash <(curl -s https://codecov.io/bash) -f ./build/reports/jacoco/jacocoFullTestReport/jacocoFullTestReport.xml
 orbs: {android: circleci/android@1.0}
 version: 2.1
 workflows:
