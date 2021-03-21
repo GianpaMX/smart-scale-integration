@@ -18,7 +18,7 @@ class SettingsViewModel @Inject constructor(
     observeSettings: ObserveSettings,
     private val saveSettings: SaveSettings,
     private val errorChannel: BroadcastChannel<Throwable>,
-    private val defaultDispatcher: CoroutineDispatcher
+    defaultDispatcher: CoroutineDispatcher
 ) : ViewModel() {
     val state: LiveData<SettingsState> = observeSettings()
         .map { it.toViewState() }

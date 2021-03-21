@@ -6,6 +6,7 @@ import dagger.Component
 import io.github.gianpamx.di.AppScope
 import io.github.gianpamx.di.FactoriesModule
 import io.github.gianpamx.shscale.MainActivity
+import io.github.gianpamx.shscale.background.BackgroundService
 
 @AppScope
 @Component(
@@ -21,6 +22,8 @@ interface AppComponent {
     fun inject(app: App)
 
     fun inject(activity: MainActivity)
+
+    fun inject(service: BackgroundService)
 
     @Component.Builder
     interface Builder {

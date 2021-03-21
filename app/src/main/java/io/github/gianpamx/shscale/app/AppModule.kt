@@ -9,6 +9,8 @@ import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
 import io.github.gianpamx.di.AppScope
+import io.github.gianpamx.shscale.background.BackgroundModel
+import io.github.gianpamx.shscale.domain.ObserveSettings
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.BroadcastChannel
@@ -37,4 +39,16 @@ class AppModule {
     @AppScope
     fun provideSharedPreferences(context: Context): SharedPreferences =
         context.getSharedPreferences("internal", MODE_PRIVATE)
+
+    @Provides
+    @AppScope
+    fun provide(
+        observeSettings: ObserveSettings,
+        errorChannel: BroadcastChannel<Throwable>,
+        defaultDispatcher: CoroutineDispatcher
+    ) = BackgroundModel(
+        observeSettings,
+        errorChannel,
+        defaultDispatcher
+    )
 }
