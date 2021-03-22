@@ -1,6 +1,5 @@
 package io.github.gianpamx.shscale.background
 
-import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -9,12 +8,10 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.lifecycleScope
 import io.github.gianpamx.shscale.MainActivity
@@ -23,12 +20,12 @@ import io.github.gianpamx.shscale.app.ComponentApp
 import io.github.gianpamx.shscale.background.BackgroundEvent.ACTIVITY_STARTED
 import io.github.gianpamx.shscale.domain.ObserveSettings
 import io.github.gianpamx.shscale.domain.SaveSettings
+import io.github.gianpamx.shscale.isPermissionGranted
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 const val BG_SERVICE_EVENT = "BG_SERVICE_EVENT"
@@ -189,6 +186,3 @@ class TurnOffBroadcastReceiver : BroadcastReceiver() {
 private fun Context.hidePermissionNotification() {
     NotificationManagerCompat.from(this).cancel(PERMISSION_NOTIFICATION_ID)
 }
-
-private fun Context.isPermissionGranted() =
-    checkSelfPermission(this, ACCESS_FINE_LOCATION) == PERMISSION_GRANTED

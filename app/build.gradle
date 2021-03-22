@@ -58,6 +58,7 @@ dependencies {
     implementation libraries.androidx.appcompat
     implementation libraries.androidx.ktx
     implementation libraries.androidx.constraintLayout
+    implementation libraries.androidx.activityktx
 
     implementation libraries.threetenabp
     implementation libraries.timber
